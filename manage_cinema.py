@@ -36,6 +36,7 @@ class Cinema:
             row: la fila de la butaca
             seat: el numero de la butaca
         """
+        print("row: "+ str(row))
         if self.__seating[row][seat] is None:
             self.__seating[row][seat] = "occupied"
 
@@ -49,6 +50,7 @@ class Cinema:
         for row, seat in rows_seats:
             if self.__seating[row][seat] == None:
                 total+=1
+        return total
 
 #------------------------------------------- MAIN -----------------------------------------------
 cinema = Cinema(rows=10, seats_per_row=8)
@@ -59,17 +61,28 @@ cinema.create_cinema_seating()
 cinema.print_seating()
 cinema.book_seat(2,4)
 cinema.print_seating()
+"""
+
+"""
 
 #ERROR 2: le paso la lista de "seats" donde deberÃ­a haber 2 libres y me dice que hay 0.
 print("\n------------- Error 2 -----------------")
 seats = [(2,4), (3,1), (5,2)]
 total = 0
-cinema.count_free_seats(seats,total)
+total = cinema.count_free_seats(seats,total)
 print("total: "+str(total))
+
+"""
+Faltaba el return de la función para asignarlo a la variable total, ya que los parámetros no son los propios objetos en memoria, sino copias.
+"""
 
 #ERROR 3: quiero modificar la butaca (2,4) de la lista anterior para que sea la (3,4) y no me deja.
 print("\n------------- Error 3 -----------------")
-seats[0][1]=3
+seats[0] = (3,4)
 total = 0
-cinema.count_free_seats(seats,total)
+total = cinema.count_free_seats(seats,total)
 print("total: "+str(total))
+"""
+ Las tuplas son inmutables. Es decir, una vez ha sido creada una tupla, esta no cambia nunca su estructura. Literalmente, una tupla es una lista que no podemos modificar.
+ Para solucionarlo habrá que sobreescribir la primera posición de la lista.
+"""
