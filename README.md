@@ -1,1 +1,1 @@
-"# examenPy" 
+Ignasi Marí Giner
