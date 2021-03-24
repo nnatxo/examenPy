@@ -36,7 +36,7 @@ class Cinema:
             row: la fila de la butaca
             seat: el numero de la butaca
         """
-        print("row: "+ str(row))
+        print("row: "+ str(row)+" seat: "+str(seat))
         if self.__seating[row][seat] is None:
             self.__seating[row][seat] = "occupied"
 
@@ -51,18 +51,21 @@ class Cinema:
             if self.__seating[row][seat] == None:
                 total+=1
         return total
-
+    def get_seat(self):
+        return self.__seating
 #------------------------------------------- MAIN -----------------------------------------------
 cinema = Cinema(rows=10, seats_per_row=8)
+
 
 #ERROR 1: al reservar una butaca (p.e. fila 2 butaca 4) e imprimir el seating, veo que aparece como ocupada la 4 de cada fila, y no solo de la fila 2.
 print("------------- Error 1 -----------------")
 cinema.create_cinema_seating()
+
 cinema.print_seating()
 cinema.book_seat(2,4)
 cinema.print_seating()
 """
-
+La verdad es que no tengo ni idea. 
 """
 
 #ERROR 2: le paso la lista de "seats" donde deberÃ­a haber 2 libres y me dice que hay 0.
