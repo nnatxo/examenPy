@@ -34,6 +34,13 @@ def get_list(filename):
     print(word_dic)
     f.close()
 
+def mas_antiguos(book_list, year):
+    if year > 2021 or year < 1900:
+        raise ValueError("Year is not valid.")
+    ar = [x for x in book_list if x.get_data()[2] <= year]
+    for i in ar:
+        print(i.get_data())
+    return 1
 def ejercicio1():
     try:
         get_list("palabras.txt")
@@ -45,13 +52,11 @@ def ejercicio2():
     autor2 = Autor("BA443","Julio","Mendez Ramirez")
     autor3 = Autor("AG553","Fabio","Espinola Jimenez")
 
-    lista_libros=[]
-    lista_libros.append(Libro(autor1,"Cómo ser rico", 1992), autor2,"Geranios y sus misterios", 1992), autor3,"El temible pollo", 1992),)
-
+    lista_libros=[Libro(autor1,"Cómo ser rico con inmuebles", 1992), Libro(autor2,"Geranios y sus misterios", 2007), Libro(autor3,"El temible hombre pollo", 2021), Libro(autor1,"Cómo perdí mi casa y mi familia", 2014)]
     try:
-        get_list("palabras.txt")
+        mas_antiguos(lista_libros, 2019)
     except ValueError:
-        print("File is empty.")
+        print("Year is not valid.")
 
-ejercicio1()
-ejercicio2()
+#ejercicio1()
+#ejercicio2()
